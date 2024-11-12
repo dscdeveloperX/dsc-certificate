@@ -1,0 +1,19 @@
+<button (click)="OnGenerar2()">Generar-2</button>
+<app-dsc-accordion #acordion1>
+    <app-dsc-accordion-item *ngFor="let item of Data" [Active]="item.active" [Name]="item.name" [Title]="item.title" [Icon]="item.icon" (Click)="OnClickAcordion1($event)">
+        CONTENIDO ITEM {{item.name}}
+    </app-dsc-accordion-item>
+    
+</app-dsc-accordion>
+<!--
+<app-dsc-accordion-item [Active]="true" [Name]="'A'" [Title]="'Titulo 1'" [Icon]="'photo/foto1.jpg'" (Click)="OnClickAcordion1($event)">
+        CONTENIDO ITEM 1
+    </app-dsc-accordion-item>
+    <app-dsc-accordion-item [Name]="'B'" [Title]="'Titulo 2'" [Icon]="'photo/foto2.jpg'"  (Click)="OnClickAcordion1($event)">
+        CONTENIDO ITEM 2
+    </app-dsc-accordion-item>
+    <app-dsc-accordion-item [Name]="'C'" [Title]="'Titulo 3'" [Icon]="'photo/foto3.jpg'"  (Click)="OnClickAcordion1($event)">
+        CONTENIDO ITEM 3
+    </app-dsc-accordion-item>
+
+-->

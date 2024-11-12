@@ -1,0 +1,8 @@
+.selected {
+    border: 1px red solid;
+}
+div {
+    border: 1px black solid;
+    width: 30px;
+    height: 30px;
+}

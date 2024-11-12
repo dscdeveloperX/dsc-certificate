@@ -1,0 +1,32 @@
+<div class="dsc-form"> 
+    <header>
+        <h1>G&eacute;nero</h1>    
+    </header>
+    <div class="section">
+        <div class="title">
+            <label>OccupationID</label>
+        </div>
+        <div class="control">
+            <strong>{{this.Data()!==undefined?this.Data()!.OccupationID:''}}</strong>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>OccupationDescription</label>
+        </div>
+        <div class="control">
+            <strong>{{this.Data()!==undefined?this.Data()!.OccupationDescription:''}}</strong>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>OccupationActive</label>
+        </div>
+        <div class="control">
+            <strong><input type="checkbox" onclick="return false" [checked]="(this.Data()!==undefined)?this.Data()!.OccupationActive:false" /></strong>
+        </div>
+    </div>
+    <footer>
+        <button (click)="OnOccupationDelete()">Eliminar</button>
+    </footer>
+    </div>

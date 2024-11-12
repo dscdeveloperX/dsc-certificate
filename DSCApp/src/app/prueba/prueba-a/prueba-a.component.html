@@ -1,0 +1,22 @@
+
+<ng-template #template1 let-cedula="cedula" let-nombre="nombre" let-edad="edad">
+    <div>
+        <table>
+            <tr>
+                <td>Cedula</td>
+                <td>Nombre</td>
+                <td>Edad</td>
+            </tr>
+            <tr>
+                <td>{{cedula}}</td>
+                <td>{{nombre}}</td>
+                <td>{{edad}}</td>
+            </tr>
+        </table>
+    </div>
+</ng-template>
+
+<ng-container 
+[ngTemplateOutletContext]="contexto1" 
+[ngTemplateOutlet]="template1" >
+</ng-container>

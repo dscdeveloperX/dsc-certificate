@@ -1,0 +1,32 @@
+<div class="dsc-form"> 
+    <header>
+        <h1>Estado Civil</h1>    
+    </header>
+    <div class="section">
+        <div class="title">
+            <label>MaritalStatusID</label>
+        </div>
+        <div class="control">
+            <strong>{{this.Data()!==undefined?this.Data()!.MaritalStatusID:''}}</strong>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>MaritalStatusDescription</label>
+        </div>
+        <div class="control">
+            <strong>{{this.Data()!==undefined?this.Data()!.MaritalStatusDescription:''}}</strong>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>MaritalStatusActive</label>
+        </div>
+        <div class="control">
+            <strong><input type="checkbox" onclick="return false" [checked]="(this.Data()!==undefined)?this.Data()!.MaritalStatusActive:false" /></strong>
+        </div>
+    </div>
+    <footer>
+        <button (click)="OnMaritalStatusDelete()">Eliminar</button>
+    </footer>
+    </div>

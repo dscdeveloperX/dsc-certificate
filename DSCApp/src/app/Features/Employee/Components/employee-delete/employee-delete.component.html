@@ -1,0 +1,38 @@
+<div class="dsc-form"> 
+    <div class="section">
+        <div class="title">
+            <label>Foto</label>
+        </div>
+        <div class="control">
+            <img *ngIf="Data()?.PersonPhoto!= null" src="{{Host + Data()?.PersonPhoto}}" alt="" width="50px" />
+        </div>
+    </div>
+
+<div class="section">
+    <div class="title">
+        <label>PersonID</label>
+    </div>
+    <div class="control">
+        <strong>{{this.Data()!==undefined?this.Data()!.PersonID:''}}</strong>
+    </div>
+</div>
+<div class="section">
+    <div class="title">
+        <label>Nombres</label>
+    </div>
+    <div class="control">
+        <strong>{{this.Data()!==undefined?this.Data()!.PersonName + ' ' + this.Data()!.PersonSurname:''}}</strong>
+    </div>
+</div>
+<div class="section">
+    <div class="title">
+        <label>EmployeeActive</label>
+    </div>
+    <div class="control">
+        <strong><td><input type="checkbox" [checked]="this.Data()!==undefined?this.Data()!.EmployeeActive:false" onclick="return false" /></td></strong>
+    </div>
+</div>
+<footer>
+    <button (click)="OnEmployeeDelete()">Eliminar</button>
+</footer>
+</div>

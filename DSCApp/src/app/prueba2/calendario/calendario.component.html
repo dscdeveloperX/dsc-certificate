@@ -1,0 +1,14 @@
+<div>
+<label>Fecha 1</label>    
+<input type="text" [value]="fecha1" readonly/>
+<button (click)="OnModalOpen()">Open</button>
+</div>
+
+<dsc-calendar #calendar1 [Date]="fecha1" [IsModal]="true" (Change)="OnDateFecha1($event)" />
+
+<div>
+<label>Fecha 2</label>    
+<input type="text" [value]="fecha2" readonly />
+</div>
+
+<dsc-calendar [Date]="fecha2" [IsModal]="false" (Change)="OnDateFecha2($event)" />

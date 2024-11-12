@@ -1,0 +1,37 @@
+<div class="dsc-form"> 
+    <header>
+        <h1>Persona</h1>    
+    </header>
+    <div class="section">
+        <div class="title">
+            <label>PersonID</label>
+        </div>
+        <div class="control">
+            <strong>{{this.Data()!==undefined?this.Data()!.PersonID:''}}</strong>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>Nombres y apellidos</label>
+        </div>
+        <div class="control">
+            <strong>
+                {{this.Data()!==undefined?this.Data()!.PersonName:''}} 
+                {{this.Data()!==undefined?this.Data()!.PersonSurname:''}}
+            </strong>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>Activo</label>
+        </div>
+        <div class="control">
+            <strong>
+                <input type="checkbox" [checked]="this.Data()!==undefined?this.Data()!.PersonActive:false" onclick="return false" />            
+            </strong>
+        </div>
+    </div>
+    <footer>
+        <button (click)="OnPersonDelete()">Eliminar</button>
+    </footer>
+    </div>

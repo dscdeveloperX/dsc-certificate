@@ -1,0 +1,32 @@
+<div class="dsc-form"> 
+    <header>
+        <h1>Tipo de Documento</h1>    
+    </header>
+    <div class="section">
+        <div class="title">
+            <label>DocumentTypeID</label>
+        </div>
+        <div class="control">
+            <strong>{{this.Data()!==undefined?this.Data()!.DocumentTypeID:''}}</strong>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>DocumentTypeDescription</label>
+        </div>
+        <div class="control">
+            <strong>{{this.Data()!==undefined?this.Data()!.DocumentTypeDescription:''}}</strong>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>DocumentTypeActive</label>
+        </div>
+        <div class="control">
+            <strong><input type="checkbox" onclick="return false" [checked]="(this.Data()!==undefined)?this.Data()!.DocumentTypeActive:false" /></strong>
+        </div>
+    </div>
+    <footer>
+        <button (click)="OnDocumentTypeDelete()">Eliminar</button>
+    </footer>
+    </div>

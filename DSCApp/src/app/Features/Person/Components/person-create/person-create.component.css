@@ -1,0 +1,58 @@
+.dsc-form-create{
+    background-color: white;
+    background-color: white;
+    padding: 10px 0px 10px 20px;
+}
+.dsc-form-create label{
+    font-size: 0.8em;
+    color: rebeccapurple;
+}
+.dsc-form-create input{
+    padding: 2px;
+    width: 200px;
+    text-transform: uppercase;
+}
+.dsc-form-create select{
+    padding: 2px;
+    width: 200px;
+}
+.dsc-form-create .validation{
+    color: brown;
+    font-size: 0.75em;
+}
+.dsc-form-create .icon-calendar{
+    height: 22px;
+    padding: 0px 0px 0px 10px;
+    cursor: pointer;
+}
+.dsc-form-create header{
+
+}
+.dsc-form-create .canvas{
+    background-color: white;
+    cursor: crosshair;
+    border: solid 2px #c147cf;
+}
+.dsc-form-create header h1{
+
+}
+.dsc-form-create .areas{
+display: grid;
+grid-template-columns: 300px 500px;
+}
+.dsc-form-create .areas .area-a{
+    
+}
+.dsc-form-create .areas .area-b{
+    
+}
+
+.dsc-form-create .areas .area-a section{
+
+}
+.dsc-form-create .areas .area-a section .title{
+
+}
+.dsc-form-create .areas .area-a section .control{
+
+}

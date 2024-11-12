@@ -1,0 +1,48 @@
+<form class="dsc-form" [formGroup]="formGroup" (submit)="OnSubmit()">
+    <header>
+        <h1>Estado Civil</h1>
+    </header>
+    
+    <div class="section">
+        <div class="title">
+            <label>MaritalStatusID</label>
+        </div>
+        <div class="control">
+            <input type="text" formControlName="MaritalStatusID" />
+        </div>
+        <div class="validation">
+            <div *ngIf="MaritalStatusIDControl?.errors && (MaritalStatusIDControl?.dirty || MaritalStatusIDControl?.touched)">
+                <div *ngIf="MaritalStatusIDControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>MaritalStatusDescription</label>
+        </div>
+        <div class="control">
+            <input type="text" formControlName="MaritalStatusDescription" />
+        </div>
+        <div class="validation">
+            <div *ngIf="MaritalStatusDescriptionControl?.errors && (MaritalStatusDescriptionControl?.dirty || MaritalStatusDescriptionControl?.touched)">
+                <div *ngIf="MaritalStatusDescriptionControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+            <div class="title">
+                <label>MaritalStatusActive</label>
+            </div>
+            <div class="control">
+                <input type="checkbox" formControlName="MaritalStatusActive" />
+            </div>
+            <div class="validation">
+                <div *ngIf="MaritalStatusActiveControl?.errors && (MaritalStatusActiveControl?.dirty || MaritalStatusActiveControl?.touched)">
+                    <div *ngIf="MaritalStatusActiveControl?.hasError('required')">Required</div>
+                </div>
+            </div>
+    </div>
+    <footer>
+        <input type="submit" class="dsc-btn btn-green" [disabled]="!formGroup.valid" value="Agregar" />
+    </footer>
+</form>

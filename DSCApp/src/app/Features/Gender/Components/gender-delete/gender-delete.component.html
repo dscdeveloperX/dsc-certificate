@@ -1,0 +1,32 @@
+<div class="dsc-form"> 
+    <header>
+        <h1>G&eacute;nero</h1>    
+    </header>
+    <div class="section">
+        <div class="title">
+            <label>GenderID</label>
+        </div>
+        <div class="control">
+            <strong>{{this.Data()!==undefined?this.Data()!.GenderID:''}}</strong>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>GenderDescription</label>
+        </div>
+        <div class="control">
+            <strong>{{this.Data()!==undefined?this.Data()!.GenderDescription:''}}</strong>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>GenderActive</label>
+        </div>
+        <div class="control">
+            <strong><input type="checkbox" onclick="return false" [checked]="(this.Data()!==undefined)?this.Data()!.GenderActive:false" /></strong>
+        </div>
+    </div>
+    <footer>
+        <button (click)="OnGenderDelete()">Eliminar</button>
+    </footer>
+    </div>

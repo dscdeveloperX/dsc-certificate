@@ -1,0 +1,48 @@
+<form class="dsc-form" [formGroup]="formGroup" (submit)="OnSubmit()">
+    <header>
+        <h1>Ocupaci&oacute;n </h1>
+    </header>
+    
+    <!--<div class="section">
+        <div class="title">
+            <label>OccupationID</label>
+        </div>
+        <div class="control">
+            <input type="text" formControlName="OccupationID" readonly />
+        </div>
+        <div class="validation">
+            <div *ngIf="OccupationIDControl?.errors && (OccupationIDControl?.dirty || OccupationIDControl?.touched)">
+                <div *ngIf="OccupationIDControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>-->
+    <div class="section">
+        <div class="title">
+            <label>OccupationDescription</label>
+        </div>
+        <div class="control">
+            <input type="text" formControlName="OccupationDescription" />
+        </div>
+        <div class="validation">
+            <div *ngIf="OccupationDescriptionControl?.errors && (OccupationDescriptionControl?.dirty || OccupationDescriptionControl?.touched)">
+                <div *ngIf="OccupationDescriptionControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+            <div class="title">
+                <label>OccupationActive</label>
+            </div>
+            <div class="control">
+                <input type="checkbox" formControlName="OccupationActive" />
+            </div>
+            <div class="validation">
+                <div *ngIf="OccupationActiveControl?.errors && (OccupationActiveControl?.dirty || OccupationActiveControl?.touched)">
+                    <div *ngIf="OccupationActiveControl?.hasError('required')">Required</div>
+                </div>
+            </div>
+    </div>
+    <footer>
+        <input type="submit" class="dsc-btn btn-green" [disabled]="!formGroup.valid" value="Agregar" />
+    </footer>
+</form>

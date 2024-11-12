@@ -1,0 +1,20 @@
+<form class="dsc-form" [formGroup]="formGroup" (submit)="OnSubmit()">
+    <div class="section">
+        <div class="title">
+            <label>Foto</label>
+        </div>
+        <div class="control" style="position: relative;height: 100px;width: 100px;margin-bottom: 10px;">
+            <!--<input type="text" formControlName="Photo" />-->
+            <img #previewPhoto height="100px" [src]="PhotoUrl()" alt=""  />
+            <input type="file" name="Photo" formControlName="Photo" (change)="capturarFilePhoto($event)" accept="image/png,image/jpeg" style="height: 100px;width: 100px;opacity: 0;cursor: pointer;position: absolute;top: 0;left: 0;" />
+        </div>
+        <div class="validation">
+            <div *ngIf="PhotoControl?.errors && (PhotoControl?.dirty || PhotoControl?.touched)">
+                <div *ngIf="PhotoControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <input type="submit" class="dsc-btn btn-green" [disabled]="!formGroup.valid" value="Guardar" />
+    </footer>
+</form>

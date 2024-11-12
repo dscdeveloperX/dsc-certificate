@@ -1,0 +1,48 @@
+<form class="dsc-form" [formGroup]="formGroup" (submit)="OnSubmit()">
+    <header>
+        <h1>Tipo de Documento</h1>        
+    </header>
+    <div class="section">
+        <div class="title">
+            <label>DocumentTypeID</label>
+        </div>
+        <div class="control">
+            <input type="text" formControlName="DocumentTypeID" readonly />
+        </div>
+        <div class="validation">
+            <div *ngIf="DocumentTypeIDControl?.errors && (DocumentTypeIDControl?.dirty || DocumentTypeIDControl?.touched)">
+                <div *ngIf="DocumentTypeIDControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>DocumentTypeDescription</label>
+        </div>
+        <div class="control">
+            <input type="text" formControlName="DocumentTypeDescription" />
+        </div>
+        <div class="validation">
+            <div *ngIf="DocumentTypeDescriptionControl?.errors && (DocumentTypeDescriptionControl?.dirty || DocumentTypeDescriptionControl?.touched)">
+                <div *ngIf="DocumentTypeDescriptionControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+  
+        <div class="section">
+            <div class="title">
+                <label>DocumentTypeActive</label>
+            </div>
+            <div class="control">
+                <input type="checkbox" formControlName="DocumentTypeActive" />
+            </div>
+            <div class="validation">
+                <div *ngIf="DocumentTypeActiveControl?.errors && (DocumentTypeActiveControl?.dirty || DocumentTypeActiveControl?.touched)">
+                    <div *ngIf="DocumentTypeActiveControl?.hasError('required')">Required</div>
+                </div>
+            </div>
+    </div>
+    <footer>
+        <input type="submit" class="dsc-btn btn-green" [disabled]="!formGroup.valid" value="Guardar" />
+    </footer>
+</form>

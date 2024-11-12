@@ -1,0 +1,15 @@
+<div class="dsc-form"> 
+    <header>
+        <h1>Par&aacute;metro</h1>    
+    </header>  
+    <section>
+        <ul>
+            <ng-container *ngFor="let item of Data()">
+                <li (click)="Onclick(item)">{{item}}</li>
+            <!--<li>{{item.DocumentTypeID}}</li>
+            <li>{{item.DocumentTypeDescription}}</li>-->
+            
+            </ng-container>
+        </ul>
+    </section>
+    </div>

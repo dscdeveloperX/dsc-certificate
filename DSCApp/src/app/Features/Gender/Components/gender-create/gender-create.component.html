@@ -1,0 +1,48 @@
+<form class="dsc-form" [formGroup]="formGroup" (submit)="OnSubmit()">
+    <header>
+        <h1>G&eacute;nero </h1>
+    </header>
+    
+    <div class="section">
+        <div class="title">
+            <label>GenderID</label>
+        </div>
+        <div class="control">
+            <input type="text" formControlName="GenderID" />
+        </div>
+        <div class="validation">
+            <div *ngIf="GenderIDControl?.errors && (GenderIDControl?.dirty || GenderIDControl?.touched)">
+                <div *ngIf="GenderIDControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>GenderDescription</label>
+        </div>
+        <div class="control">
+            <input type="text" formControlName="GenderDescription" />
+        </div>
+        <div class="validation">
+            <div *ngIf="GenderDescriptionControl?.errors && (GenderDescriptionControl?.dirty || GenderDescriptionControl?.touched)">
+                <div *ngIf="GenderDescriptionControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+            <div class="title">
+                <label>GenderActive</label>
+            </div>
+            <div class="control">
+                <input type="checkbox" formControlName="GenderActive" />
+            </div>
+            <div class="validation">
+                <div *ngIf="GenderActiveControl?.errors && (GenderActiveControl?.dirty || GenderActiveControl?.touched)">
+                    <div *ngIf="GenderActiveControl?.hasError('required')">Required</div>
+                </div>
+            </div>
+    </div>
+    <footer>
+        <input type="submit" class="dsc-btn btn-green" [disabled]="!formGroup.valid" value="Agregar" />
+    </footer>
+</form>

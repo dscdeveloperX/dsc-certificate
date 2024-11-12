@@ -1,0 +1,19 @@
+export interface IPerson {
+    PersonID:string;
+    PersonSignatureImage?:string;
+    PersonPhoto?:string;
+    ProvinceID:number;
+    ProvinceName?:string;
+    CityID:number;
+    CityName?:string;
+    PersonName:string;
+    PersonSurname:string;
+    PersonDateOfBirth:Date;
+    PersonPhone:string;
+    PersonEmail:string;
+    GenderID:string;
+    GenderDescription?:string;
+    MaritalStatusID:string;
+    MaritalStatusDescription?:string;
+    PersonActive?:boolean;
+}

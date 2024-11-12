@@ -1,0 +1,49 @@
+<div [class]="IsModal?'dsc-calendar dsc-calendar-popup':'dsc-calendar'" [style]="(modal())?'display:grid':'display:none'">
+    <div class="container">
+            <header class="header">
+                <p class="current-date" (click)="OnMostrarAnio()">{{calendarCurrentDate()}}</p>
+                <div class="navigation">
+                    <img src="../../../assets/image/dsc/previous.png" alt="" (click)="OnChangePrevNext('calendar-prev')" id="calendar-prev"
+                           />
+                    <img src="../../../assets/image/dsc/next.png" alt="" (click)="OnChangePrevNext('calendar-next')" id="calendar-next"
+                           />
+                </div>
+            </header>
+     
+            <div class="body">
+                <ul class="weekdays" *ngIf="optionManipulate=='day'">
+                    <li>Dom</li>
+                    <li>Lun</li>
+                    <li>Mar</li>
+                    <li>Mie</li>
+                    <li>Jue</li>
+                    <li>Vie</li>
+                    <li>Sab</li>
+                </ul>
+                <ul #calendarDates *ngIf="optionManipulate=='day'" class="dates">
+                    <ng-container *ngFor="let item of dateMonthCalendar()">
+                        <li  [class]="item.Class" (click)="OnChangeDate(item.Date,item.Class)">{{item.Day}}</li>
+                    </ng-container>
+                </ul>
+                <ul class="years" *ngIf="optionManipulate=='year'">
+                    <ng-container *ngFor="let item of Years()">
+                        <li  [class]="year == item?'active':''" (click)="OnYearsSelect(item)">
+                            {{item}}
+                        </li>
+                    </ng-container>
+                    
+                </ul>
+                <ul class="months" *ngIf="optionManipulate=='month'">
+                    <ng-container *ngFor="let item of months; let i = index; trackBy:calendarID">
+                        <li  (click)="OnMonthSelect(i)">
+                            {{item.substring(0,3)}}
+                        </li>
+                    </ng-container>
+                    
+                </ul>
+            </div>
+        </div>
+       
+    </div>
+    
+    

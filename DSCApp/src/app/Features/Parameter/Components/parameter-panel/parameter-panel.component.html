@@ -1,0 +1,75 @@
+<dsc-modal [Id]="idCreate" [Title]="'Agregar registro'">
+    <app-parameter-create />
+</dsc-modal>
+<dsc-modal [Id]="idUpdate" [Title]="'Actualizar registro'">
+    <app-parameter-update />
+</dsc-modal>
+<dsc-modal [Id]="idDelete" [Title]="'Eliminar registro'">
+    <app-parameter-delete />
+</dsc-modal>
+
+<div class="dsc-listview">
+    <header>
+        <h1>Lista de Par&aacute;metros</h1>
+        
+        <div class="options">
+            <button (click)="OnClickCreate()">Agregar</button>
+        </div>
+    </header>
+    <div class="body">
+        <div class="list">
+        <table>
+            <thead>
+                <tr>
+                    <th>ParameterID</th>
+                    <th>CompanyID</th>
+                    <th>ParameterName</th>
+                    <th>ParameterType</th>
+                    <th>ParameterValue</th>
+                    <th>ParameterActive</th>
+                    <th>panel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="Data().length==0">
+                    <td colspan="6">No existen registros</td>
+                </tr>
+                <tr *ngFor="let item of Data(); trackBy:readID">
+                        <td>{{item.ParameterID}}</td>
+                        <td>{{item.CompanyID}}</td>
+                        <td>{{item.ParameterName}}</td>
+                        <td>{{item.ParameterType}}</td>
+                        <td>{{item.ParameterValue}}</td>
+                        <td><input type="checkbox" [checked]="item.ParameterActive" onclick="return false" /></td>
+                        <td>
+                            <button (click)="openModalUpdate(item)">Editar</button>
+                            <button (click)="openModalDelete(item)">Eliminar</button></td>
+                        </tr>
+            </tbody>
+            <tfoot>
+                <div class="paginacion-contenedor">
+                    <ul>
+                        <li>
+                            <select [(ngModel)]="filterPaginateQuantity" (change)="OnPaginateQuantity()">
+                                <option value="5" selected>5 registros</option>
+                                <option value="50">50 registros</option>
+                                <option value="100">100 registros</option>
+                                <option value="250">250 registros</option>
+                                <option value="500">500 registros</option>
+                            </select>
+                        </li>
+                        <li class="previous"><button (click)="OnPaginate(-1)" [disabled]="!DataPagination().Previous" >Previous</button></li>
+                        <li class="information"><strong>{{DataPagination().Page}}</strong><span> de </span><aside>{{DataPagination().Pages}}</aside></li>
+                        <li class="next"><button (click)="OnPaginate(1)" [disabled]="!DataPagination().Next">Next</button></li>
+                    </ul>
+                  </div>
+            </tfoot>
+        </table>
+        </div>
+    </div>
+    
+    <footer>
+
+    </footer>
+</div>
+

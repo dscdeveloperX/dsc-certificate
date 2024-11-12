@@ -1,0 +1,68 @@
+<dsc-calendar #EmployeeDateExit [Date]="EmployeeDateExitControl.value" [IsModal]="true" (Change)="OnEmployeeDateExit($event)" />
+
+<form class="dsc-form" [formGroup]="formGroup" (submit)="OnSubmit()">
+    <div class="section">
+        <div class="title">
+            <label>PersonID</label>
+        </div>
+        <div class="control">
+            <img *ngIf="Data()?.PersonPhoto!=null" src="{{Host + Data()?.PersonPhoto}}" alt="" width="50px" />
+            <h4>{{Data()?.PersonID}}</h4>
+            <h4>{{Data()?.PersonName + ' ' + Data()?.PersonSurname}}</h4>
+            <h4>{{Data()?.EmployeeDateEntry}}</h4>
+        </div>
+        
+    </div>
+    
+    
+    
+    
+    <div class="section">
+        <div class="title">
+            <label>Empleado Activado</label>
+        </div>
+        <div class="control">
+            <input type="checkbox" formControlName="EmployeeActive" />
+        </div>
+        <div class="validation">
+            <div *ngIf="EmployeeActiveControl?.errors && (EmployeeActiveControl?.dirty || EmployeeActiveControl?.touched)">
+                <div *ngIf="EmployeeActiveControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!EmployeeActive()">
+        <div class="section">
+            <div class="title">
+                <label>EmployeeDateExit</label>
+            </div>
+            <div class="control">
+                <input type="text" formControlName="EmployeeDateExit" />
+                <img src="../../../../../assets/image/dsc/date.png" alt="" (click)="OnModalEmployeeDateExitOpen()" />
+            </div>
+            <div class="validation">
+                <div *ngIf="EmployeeDateExitControl?.errors && (EmployeeDateExitControl?.dirty || EmployeeDateExitControl?.touched)">
+                    <div *ngIf="EmployeeDateExitControl?.hasError('required')">Required</div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="title">
+                <label>EmployeeReason</label>
+            </div>
+            <div class="control">
+                <textarea type="text" formControlName="EmployeeReason"></textarea>
+            </div>
+            <div class="validation">
+                <div *ngIf="EmployeeReasonControl?.errors && (EmployeeReasonControl?.dirty || EmployeeReasonControl?.touched)">
+                    <div *ngIf="EmployeeReasonControl?.hasError('required')">Required</div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    <footer>
+        <input type="submit" class="dsc-btn btn-green" [disabled]="!formGroup.valid" value="Actualizar" />
+    </footer>
+</form>
+

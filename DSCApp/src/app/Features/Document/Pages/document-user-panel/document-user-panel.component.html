@@ -1,0 +1,95 @@
+<dsc-modal [Id]="idYear" [Title]="'Seleccionar un Período'">
+    <app-document-list-year />
+</dsc-modal>
+<dsc-modal [Id]="idType" [Title]="'Seleccionar un tipo'">
+    <app-document-list-type />
+</dsc-modal>
+<!--<dsc-modal [Id]="idCreate" [Title]="'Agregar registro'">
+    <app-parameter-create />
+</dsc-modal>
+<dsc-modal [Id]="idUpdate" [Title]="'Actualizar registro'">
+    <app-parameter-update />
+</dsc-modal>
+<dsc-modal [Id]="idDelete" [Title]="'Eliminar registro'">
+    <app-parameter-delete />
+</dsc-modal>
+-->
+
+<form class="dsc-user-search" [formGroup]="formGroup" (submit)="OnSubmit()">
+    <div class="section">
+        
+            <div class="dsc-filtro">
+                <div class="year" (click)="OnClickYear()">
+                    <h5><span>Año</span></h5>
+                    <aside>
+                        <strong>{{DataYear()}}</strong>
+                        <img src="./assets/image/shared/search.png" width="50px" height="50px" />
+                    </aside>
+                    <input type="hidden" name="documentGroupDateYear" formControlName="documentGroupDateYear" value="{{DataYear()}}" />
+                    
+                </div>
+                <div class="type" (click)="OnClickType()">
+                    <h5><span>Documento</span></h5>
+                    <aside>
+                        <strong>{{DataType()?.DocumentTypeDescription}}</strong>
+                        <img src="./assets/image/shared/search.png" width="50px" height="50px" />
+                    </aside>
+                <input type="hidden" name="documentGroupType" formControlName="documentGroupType" value="{{DataType()?.DocumentTypeID}}" />
+                </div>
+            </div>
+            <div class="validation">
+            <div *ngIf="!documentGroupTypeControl?.errors && (documentGroupTypeControl?.dirty || documentGroupTypeControl?.touched)">
+                <div *ngIf="!documentGroupTypeControl?.hasError('required')">Required</div>
+            </div>
+            </div>
+    
+        <div class="validation">
+            <div *ngIf="!documentGroupDateYearControl?.errors && (documentGroupDateYearControl?.dirty || documentGroupDateYearControl?.touched)">
+                <div *ngIf="!documentGroupDateYearControl?.hasError('required')">Se requiere per&iacute;odo</div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+<div class="dsc-listview">
+    <div class="body">
+        <div class="list">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mes</th>
+                    <th>Descripci&oacute;n</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="Data().length==0" class="dsc-empty-data">
+                    <td colspan="3"><div>
+                        <img src="./assets/image/shared/document_error.png" width="150px" height="150px" />
+                        <span>No existen documentos</span>
+                    </div></td>
+                </tr>
+                <ng-container *ngFor="let item of Data(); trackBy:readID">
+                    <tr class="dsc-full-data">
+                        <td class="dsc-td-1"><span>{{(item.DocumentGroupDate  | date: 'MM')}}</span></td><!--.getMonth() + 1-->
+                        <!--<td><a target="_blank" href="https://drive.google.com/viewerng/viewer?url={{HostBase}}Uploads/Document/{{item.DocumentCode}}.pdf?pid=explorer&efh=false&a=v&chrome=false&embedded=true">{{item.DocumentGroupDescription}}</a></td>-->
+                        <td class="dsc-td-2"><strong (click)="OnDocumentImageView($event,item.DocumentCode)">{{item.DocumentGroupDescription}}</strong></td>
+                        <td class="dsc-td-3"><a target="_blank" href="{{HostBase}}Uploads/Document/{{item.DocumentCode}}.pdf" alt="Descargar documento" title="Descargar documento"><img src="./assets/image/shared/download.png" width="50px" height="50px" /></a></td>
+                    </tr>
+                </ng-container>
+                    
+            </tbody>
+            
+        </table>
+        </div>
+    </div>
+    
+    <footer>
+
+    </footer>
+</div>
+
+<img src="data:image/jpg;base64,{{DataImage()}}" />

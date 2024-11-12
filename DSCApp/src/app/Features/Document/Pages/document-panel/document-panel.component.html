@@ -1,0 +1,140 @@
+<!--<dsc-modal [Id]="idCreate" [Title]="'Agregar registro'">
+    <app-parameter-create />
+</dsc-modal>
+<dsc-modal [Id]="idUpdate" [Title]="'Actualizar registro'">
+    <app-parameter-update />
+</dsc-modal>
+<dsc-modal [Id]="idDelete" [Title]="'Eliminar registro'">
+    <app-parameter-delete />
+</dsc-modal>
+-->
+
+<form class="dsc-form" [formGroup]="formGroup" (submit)="OnSubmit()">
+    <div class="section">
+        <div class="title">
+            <label>Tipo de Documento</label>
+        </div>
+        <div class="control">
+            <select name="documentGroupType" formControlName="documentGroupType">
+                <option *ngFor="let item of DataDocumentGroupType()" value="{{item.DocumentTypeID}}">{{item.DocumentTypeDescription}}</option>
+            </select>
+        </div>
+        <div class="validation">
+            <div *ngIf="documentGroupTypeControl?.errors && (documentGroupTypeControl?.dirty || documentGroupTypeControl?.touched)">
+                <div *ngIf="documentGroupTypeControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>Per&iacute;odo</label>
+        </div>
+        <div class="control">
+            <div>
+                <label>Anio</label>
+                <select name="documentGroupDateYear" formControlName="documentGroupDateYear">
+                    <ng-container *ngFor="let item of documentYearData">
+                        <option *ngIf="item==documentYear" value="{{item}}" selected>{{item}}</option>
+                        <option *ngIf="!(item==documentYear)" value="{{item}}">{{item}}</option>
+                    </ng-container>
+                    
+                </select>
+            </div>
+        </div>
+        <div class="validation">
+            <div *ngIf="documentGroupDateYearControl?.errors && (documentGroupDateYearControl?.dirty || documentGroupDateYearControl?.touched)">
+                <div *ngIf="documentGroupDateYearControl?.hasError('required')">Se requiere per&iacute;odo</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>Grupos de Documentos</label>
+        </div>
+        <div class="control">
+            <select name="documentGroupID" formControlName="documentGroupID">
+                <option *ngFor="let item of DataDocumentGroupID()" value="{{item.DocumentGroupID}}">{{item.DocumentGroupDescription}}</option>
+                <option *ngIf="DataDocumentGroupID().length ==0" value="">No existen datos</option>
+            </select>
+        </div>
+        <div class="validation">
+            <div *ngIf="documentGroupTypeControl?.errors && (documentGroupTypeControl?.dirty || documentGroupTypeControl?.touched)">
+                <div *ngIf="documentGroupTypeControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <input type="submit" class="dsc-btn btn-green" [disabled]="!formGroup.valid" value="Buscar" />
+    </footer>
+</form>
+
+
+
+
+<div class="dsc-listview">
+    <header>
+        <h1>Lista de Documentos</h1>
+        
+        <div class="options">
+            <button (click)="OnDocumentSendEmail()">Enviar documentos por correo</button>
+            <button (click)="OnDocumentDelete()" >Eliminar registro(s)</button>
+        </div>
+    </header>
+    <div class="body">
+        <div class="list">
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" (change)="OnChangeDocumentID($event)" /></th>
+                    <th>Nombres</th>
+                    <th>C&oacute;digo</th>
+                    <th>Fecha Generado</th>
+                    <th>Email</th>
+                    <th>Enviado</th>
+                    <th>Fecha de envio</th>
+                    <th>panel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="Data().length==0">
+                    <td colspan="6">No existen registros</td>
+                </tr>
+                <tr *ngFor="let item of Data(); trackBy:readID">
+                        <td><input type="checkbox" #inputDocumentID value="{{item.DocumentID}}" /></td>
+                        <td>{{item.PersonSurname + ' ' + item.PersonName}}</td>
+                        <td>{{item.DocumentCode}}</td>
+                        <td>{{item.DocumentDateCreation}}</td>
+                        <td>{{item.DocumentEmailSend}}</td>
+                        <td><strong [className]="{'dsc-correo-enviado':item.DocumentEmailSendState}">{{item.DocumentEmailSendState?"SI":"NO"}}</strong></td>
+                        <td>{{item.DocumentDateEmailSend==undefined?"":item.DocumentDateEmailSend}}</td>
+                        <td>
+                            <a target="_blank" href="https://drive.google.com/viewerng/viewer?url={{HostBase}}Uploads/Document/{{item.DocumentCode}}.pdf?pid=explorer&efh=false&a=v&chrome=false&embedded=true"><img src="./assets/image/shared/download.png" alt="Descargar documento" title="Descargar documento" /></a></td>
+                        </tr>
+            </tbody>
+            <tfoot>
+                <div class="paginacion-contenedor">
+                    <ul>
+                        <li>
+                            <select [(ngModel)]="filterPaginateQuantity" (change)="OnPaginateQuantity()">
+                                <option value="10" selected>10 registros</option>
+                                <option value="50">50 registros</option>
+                                <option value="100">100 registros</option>
+                                <option value="250">250 registros</option>
+                                <option value="500">500 registros</option>
+                            </select>
+                        </li>
+                        <li class="previous"><button (click)="OnPaginate(-1)" [disabled]="!DataPagination().Previous" >Previous</button></li>
+                        <li class="information"><strong>{{DataPagination().Page}}</strong><span> de </span><aside>{{DataPagination().Pages}}</aside></li>
+                        <li class="next"><button (click)="OnPaginate(1)" [disabled]="!DataPagination().Next">Next</button></li>
+                    </ul>
+                  </div>
+            </tfoot>
+        </table>
+        </div>
+    </div>
+    
+    <footer>
+
+    </footer>
+</div>
+

@@ -1,0 +1,77 @@
+<form class="dsc-form" [formGroup]="formGroup" (submit)="OnSubmit()">
+    <header>
+        <h1>Par&aacute;metro</h1>        
+    </header>
+    <div class="section">
+        <div class="title">
+            <label>CompanyID</label>
+        </div>
+        <div class="control">
+            <input type="hidden" id="ParameterID" />
+            <select formControlName="CompanyID">
+                <option value="0000000000000">Todo</option>
+                <option *ngFor="let item of DataCompany()" value="{{item.CompanyID}}">{{item.CompanyName}}</option>
+                </select>
+        </div>
+        <div class="validation">
+            <div *ngIf="CompanyIDControl?.errors && (CompanyIDControl?.dirty || CompanyIDControl?.touched)">
+                <div *ngIf="CompanyIDControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>ParameterType</label>
+        </div>
+        <div class="control">
+            <input type="text" formControlName="ParameterType" />
+        </div>
+        <div class="validation">
+            <div *ngIf="ParameterTypeControl?.errors && (ParameterTypeControl?.dirty || ParameterTypeControl?.touched)">
+                <div *ngIf="ParameterTypeControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>ParameterName</label>
+        </div>
+        <div class="control">
+            <input type="text" formControlName="ParameterName" />
+        </div>
+        <div class="validation">
+            <div *ngIf="ParameterNameControl?.errors && (ParameterNameControl?.dirty || ParameterNameControl?.touched)">
+                <div *ngIf="ParameterNameControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>ParameterValue</label>
+        </div>
+        <div class="control">
+            <input type="text" formControlName="ParameterValue" />
+        </div>
+        <div class="validation">
+            <div *ngIf="ParameterValueControl?.errors && (ParameterValueControl?.dirty || ParameterValueControl?.touched)">
+                <div *ngIf="ParameterValueControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+        <div class="section">
+            <div class="title">
+                <label>ParameterActive</label>
+            </div>
+            <div class="control">
+                <input type="checkbox" formControlName="ParameterActive" />
+            </div>
+            <div class="validation">
+                <div *ngIf="ParameterActiveControl?.errors && (ParameterActiveControl?.dirty || ParameterActiveControl?.touched)">
+                    <div *ngIf="ParameterActiveControl?.hasError('required')">Required</div>
+                </div>
+            </div>
+    </div>
+    <footer>
+        <input type="submit" class="dsc-btn btn-green" [disabled]="!formGroup.valid" value="Guardar" />
+    </footer>
+</form>

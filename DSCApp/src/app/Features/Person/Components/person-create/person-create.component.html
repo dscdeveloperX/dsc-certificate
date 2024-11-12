@@ -1,0 +1,200 @@
+    
+ <dsc-calendar #PersonDateOfBirth [Date]="PersonDateOfBirthControl.value" [IsModal]="true" (Change)="OnPersonDateOfBirth($event)" />
+    
+<form class="dsc-form-create" [formGroup]="formGroup" (submit)="OnSubmit()">
+    <div class="areas">
+        <div class="area-a">
+    
+    <div class="section">
+        <div class="title">
+            <label>PersonID</label>
+        </div>
+        <div class="control">
+            <input type="text" formControlName="PersonID" />
+        </div>
+        <div class="validation">
+            <div *ngIf="PersonIDControl?.errors && (PersonIDControl?.dirty || PersonIDControl?.touched)">
+                <div *ngIf="PersonIDControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>ProvinceID</label>
+        </div>
+        <div class="control">
+            <select formControlName="ProvinceID">
+                <option *ngFor="let item of DataProvince()" value="{{item.ProvinceID}}">{{item.ProvinceName}}</option>
+            </select>
+        </div>
+        <div class="validation">
+            <div *ngIf="ProvinceIDControl?.errors && (ProvinceIDControl?.dirty || ProvinceIDControl?.touched)">
+                <div *ngIf="ProvinceIDControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>CityID</label>
+        </div>
+        <div class="control">
+            <select formControlName="CityID">
+                <option *ngFor="let item of DataCity()" value="{{item.CityID}}">{{item.CityName}}</option>
+            </select>
+        </div>
+        <div class="validation">
+            <div *ngIf="CityIDControl?.errors && (CityIDControl?.dirty || CityIDControl?.touched)">
+                <div *ngIf="CityIDControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+    
+        <div class="section">
+            <div class="title">
+                <label>PersonName</label>
+            </div>
+            <div class="control">
+                <input type="text" formControlName="PersonName" />
+            </div>
+            <div class="validation">
+                <div *ngIf="PersonNameControl?.errors && (PersonNameControl?.dirty || PersonNameControl?.touched)">
+                    <div *ngIf="PersonNameControl?.hasError('required')">Required</div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="title">
+                <label>PersonSurname</label>
+            </div>
+            <div class="control">
+                <input type="text" formControlName="PersonSurname" />
+            </div>
+            <div class="validation">
+                <div *ngIf="PersonSurnameControl?.errors && (PersonSurnameControl?.dirty || PersonSurnameControl?.touched)">
+                    <div *ngIf="PersonSurnameControl?.hasError('required')">Required</div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="title">
+                <label>PersonDateOfBirth</label>
+            </div>
+            <div class="control">
+                <input type="text" formControlName="PersonDateOfBirth" />
+                <img src="../../../../../assets/image/dsc/date.png" alt="" (click)="OnModalPersonDateOfBirthOpen()" />
+            </div>
+            <div class="validation">
+                <div *ngIf="PersonDateOfBirthControl?.errors && (PersonDateOfBirthControl?.dirty || PersonDateOfBirthControl?.touched)">
+                    <div *ngIf="PersonDateOfBirthControl?.hasError('required')">Required</div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="title">
+                <label>PersonPhone</label>
+            </div>
+            <div class="control">
+                <input type="text" formControlName="PersonPhone" />
+            </div>
+            <div class="validation">
+                <div *ngIf="PersonPhoneControl?.errors && (PersonPhoneControl?.dirty || PersonPhoneControl?.touched)">
+                    <div *ngIf="PersonPhoneControl?.hasError('required')">Required</div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="title">
+                <label>PersonEmail</label>
+            </div>
+            <div class="control">
+                <input type="text" formControlName="PersonEmail" />
+            </div>
+            <div class="validation">
+                <div *ngIf="PersonEmailControl?.errors && (PersonEmailControl?.dirty || PersonEmailControl?.touched)">
+                    <div *ngIf="PersonEmailControl?.hasError('required')">Required</div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="title">
+                <label>MaritalStatusID</label>
+            </div>
+            <div class="control">
+                <select formControlName="MaritalStatusID">
+                    <option *ngFor="let item of DataMaritalStatus()" value="{{item.MaritalStatusID}}">{{item.MaritalStatusDescription}}</option>
+                </select>
+            </div>
+            <div class="validation">
+                <div *ngIf="MaritalStatusIDControl?.errors && (MaritalStatusIDControl?.dirty || MaritalStatusIDControl?.touched)">
+                    <div *ngIf="MaritalStatusIDControl?.hasError('required')">Required</div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="title">
+                <label>GenderID</label>
+            </div>
+            <div class="control">
+                <select formControlName="GenderID">
+                    <option *ngFor="let item of DataGender()" value="{{item.GenderID}}">{{item.GenderDescription}}</option>
+                </select>
+            </div>
+            <div class="validation">
+                <div *ngIf="GenderIDControl?.errors && (GenderIDControl?.dirty || GenderIDControl?.touched)">
+                    <div *ngIf="GenderIDControl?.hasError('required')">Required</div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="title">
+                <label>PersonActive</label>
+            </div>
+            <div class="control">
+                <input type="checkbox" formControlName="PersonActive" />
+            </div>
+            <div class="validation">
+                <div *ngIf="PersonActiveControl?.errors && (PersonActiveControl?.dirty || PersonActiveControl?.touched)">
+                    <div *ngIf="PersonActiveControl?.hasError('required')">Required</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="area-b">
+        <div class="section">
+            <div class="title">
+                <label>Foto</label>
+            </div>
+            <div class="control" style="position: relative;height: 100px;width: 100px;margin-bottom: 10px;">
+                <!--<input type="text" formControlName="Photo" />-->
+                <img #previewPhoto height="100px" src="./assets/image/shared/photo-empty.jpg" alt=""  />
+                <input type="file" name="Photo" formControlName="Photo" (change)="capturarFilePhoto($event)" accept="image/png,image/jpeg" style="height: 100px;width: 100px;opacity: 0;cursor: pointer;position: absolute;top: 0;left: 0;" />
+            </div>
+            <div class="validation">
+                <div *ngIf="PhotoControl?.errors && (PhotoControl?.dirty || PhotoControl?.touched)">
+                    <div *ngIf="PhotoControl?.hasError('required')">Required</div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="title">
+                <label>Firma</label>
+            </div>
+            <div class="control" style="display: grid;width: 250px;">
+                <canvas #canvasSignature id="canvasSignature" height="250" width="250" class="canvas">
+                </canvas>
+                <button (click)="ClearCanvas()">Limpiar y volver a firmar</button>
+                <input type="hidden" formControlName="Signature" />
+            </div>
+            <div class="validation">
+                <div *ngIf="SignatureControl?.errors && (SignatureControl?.dirty || SignatureControl?.touched)">
+                    <div *ngIf="SignatureControl?.hasError('required')">Required</div>
+                </div>
+            </div>
+        </div>
+     </div>
+    </div>
+    <footer>
+        <input type="submit" class="dsc-btn btn-green" [disabled]="!formGroup.valid" value="Agregar" />
+    </footer>
+</form>
+

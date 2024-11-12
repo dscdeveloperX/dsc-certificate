@@ -1,0 +1,10 @@
+<header class="dsc-main-header-contenedor">
+    <img class="dsc-main-header-icono-menu" src="./assets/image/shared/menu.png" height="50px" (click)="onOffMenuPrincipal();"/>
+    <img class="dsc-main-header-icono-empresa" src="./assets/image/shared/empresa_logo.png" />
+    <h1 class="dsc-main-header-nombre-empresa">miDOC</h1>
+    <!--<img class="dsc-main-header-icono-sesion" src="./assets/image/general/contacto.png" width="50px" height="50px" />-->
+</header>
+<nav class="dsc-main-navegacion" [ngClass]="{'dsc-main-navegacion-activa':!onOffMenu}">
+    <!--<app-pagina-menu [dataMenu]="item" *ngFor="let item of dataNavegacion" (navegarItemsMenuEvent)="navegarItemsMenu($event)" ></app-pagina-menu>-->
+    
+</nav>

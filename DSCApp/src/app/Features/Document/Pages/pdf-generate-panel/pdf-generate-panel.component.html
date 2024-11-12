@@ -1,0 +1,87 @@
+<button>Convertir archivo excel en xml</button>
+<form class="dsc-form" [formGroup]="formGroup" (submit)="OnSubmit()">
+    <div class="section">
+        <div class="title">
+            <label>Tipo de Documento a Generar</label>
+        </div>
+        <div class="control">
+            <select name="DocumentType" formControlName="DocumentType">
+                <option *ngFor="let item of DataDocumentType()" value="{{item.DocumentTypeID}}">{{item.DocumentTypeDescription}}</option>
+            </select>
+        </div>
+        <div class="validation">
+            <div *ngIf="DocumentTypeControl?.errors && (DocumentTypeControl?.dirty || DocumentTypeControl?.touched)">
+                <div *ngIf="DocumentTypeControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>Descripci&oacute;n del grupo de documentos</label>
+        </div>
+        <div class="control">
+            <textarea type="text" name="DocumentGroupDescription" formControlName="DocumentGroupDescription"></textarea>
+        </div>
+        <div class="validation">
+            <div *ngIf="DocumentGroupDescriptionControl?.errors && (DocumentGroupDescriptionControl?.dirty || DocumentGroupDescriptionControl?.touched)">
+                <div *ngIf="DocumentGroupDescriptionControl?.hasError('required')">Se requiere descripci&oacute;n</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>Per&iacute;odo del grupo de documentos</label>
+        </div>
+        <div class="control">
+            <div>
+                <label>Anio</label>
+                <select name="" (change)="OnChangeYear($event)">
+                    <ng-container *ngFor="let item of documentYearData">
+                        <option *ngIf="item==documentYear" value="{{item}}" selected>{{item}}</option>
+                        <option *ngIf="!(item==documentYear)" value="{{item}}">{{item}}</option>
+                    </ng-container>
+                    
+                </select>
+                <label>Mes</label>
+                <select name=""  (change)="OnChangeMonth($event)">
+                    <ng-container *ngFor="let item of documentMonthData">
+                        <option *ngIf="item.MonthID==documentMonth" value="{{item.MonthID}}" selected>{{item.MonthName}}</option>
+                        <option *ngIf="!(item.MonthID==documentMonth)" value="{{item.MonthID}}">{{item.MonthName}}</option>
+                        
+                    </ng-container>
+                </select>
+            </div>
+            <input type="hidden" name="DocumentGroupDate" formControlName="DocumentGroupDate" />
+        </div>
+        <div class="validation">
+            <div *ngIf="DocumentGroupDateControl?.errors && (DocumentGroupDateControl?.dirty || DocumentGroupDateControl?.touched)">
+                <div *ngIf="DocumentGroupDateControl?.hasError('required')">Se requiere per&iacute;odo</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>Buscar archivo XML</label>
+        </div>
+        <div class="control" style="position: relative;height: 100px;width: 100px;margin-bottom: 10px;">
+            <img #previewPhoto height="100px" src="./assets/image/shared/photo-empty.jpg" alt=""  />
+            <input type="file" name="DocumentFile" formControlName="DocumentFile" (change)="capturarFile($event)" accept="text/xml,application/xml" style="height: 100px;width: 100px;opacity: 0;cursor: pointer;position: absolute;top: 0;left: 0;" />
+        </div>
+        <div class="validation">
+            <div *ngIf="DocumentFileControl?.errors && (DocumentFileControl?.dirty || DocumentFileControl?.touched)">
+                <div *ngIf="DocumentFileControl?.hasError('required')">Seleccionar un archivo es requerido</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <input type="submit" class="dsc-btn btn-green" [disabled]="!formGroup.valid" value="Generar documentos PDF" />
+    </footer>
+</form>
+<div *ngIf="Procesando()" class="dsc-loading">
+    <img src="./assets/image/shared/loading.png" alt="" />
+    <span>Procesando...</span>
+</div>
+<div class="dsc-message">{{Message()}}</div>
+<ul class="dsc-message-validation">
+    <li *ngFor="let item of MessageValidation()">{{item}}</li>
+</ul>

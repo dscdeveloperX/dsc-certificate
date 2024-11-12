@@ -1,0 +1,11 @@
+<div class="dsc-accordion-item">
+    <div class="header">
+        <img src="./assets/image/{{Icon}}" alt="" />
+        <h2>{{Title}}</h2>
+        <img src="./assets/image/dsc/next.png" alt="" (click)="OnClick()" />
+    </div>
+    <div class="body" *ngIf="onOff" style="background-color:yellow;height:100px;">
+        <ng-content></ng-content>
+    </div>
+</div>
+

@@ -1,0 +1,39 @@
+<form class="dsc-form" [formGroup]="formGroup" (submit)="OnSubmit()">
+    <div class="section">
+        <div class="title">
+            <label>Tipo de Documento a Generar</label>
+        </div>
+        <div class="control">
+            <select name="DocumentType" formControlName="DocumentType">
+                <option *ngFor="let item of DataDocumentType()" value="{{item.DocumentTypeID}}">{{item.DocumentTypeDescription}}</option>
+            </select>
+        </div>
+        <div class="validation">
+            <div *ngIf="DocumentTypeControl?.errors && (DocumentTypeControl?.dirty || DocumentTypeControl?.touched)">
+                <div *ngIf="DocumentTypeControl?.hasError('required')">Required</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title">
+            <label>Buscar archivo Excel</label>
+        </div>
+        <div class="control" style="position: relative;height: 100px;width: 100px;margin-bottom: 10px;">
+            <img #previewPhoto height="100px" src="./assets/image/shared/photo-empty.jpg" alt=""  />
+            <input type="file" name="DocumentFile" formControlName="DocumentFile" (change)="capturarFile($event)" accept=".xls, .xlsx, .xlsm, .csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel,application/vnd.ms-excel.sheet.macroenabled.12" style="height: 100px;width: 100px;opacity: 0;cursor: pointer;position: absolute;top: 0;left: 0;" />
+        </div>
+        <div class="validation">
+            <div *ngIf="DocumentFileControl?.errors && (DocumentFileControl?.dirty || DocumentFileControl?.touched)">
+                <div *ngIf="DocumentFileControl?.hasError('required')">Seleccionar un archivo es requerido</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <input type="submit" class="dsc-btn btn-green" [disabled]="!formGroup.valid" value="Generar archivo XML" />
+    </footer>
+</form>
+<div *ngIf="Procesando()" class="dsc-loading">
+    <img src="./assets/image/shared/loading.png" alt="" />
+    <span>Procesando...</span>
+</div>
+<div class="dsc-message">{{Message()}}</div>
